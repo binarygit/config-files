@@ -1,0 +1,71 @@
+xterm*faceName: Monospace:size=12:antialias=true
+Xterm*allowBoldFonts: true
+
+xterm*geometry: 80x25
+
+XTerm*termName: xterm-256color
+UXTerm*termName: xterm-256color
+
+! VT Font Menu: Unreadable
+xterm*faceSize1: 14
+! VT font menu: Tiny
+xterm*faceSize2: 16
+! VT font menu: Small
+xterm*faceSize3: 20
+! VT font menu: Medium
+xterm*faceSize4: 22
+! VT font menu: Large
+xterm*faceSize5: 26
+! VT font menu: Huge
+xterm*faceSize6: 32
+
+!shortcuts for increasing and decreasing font-size
+xterm*VT100.Translations: #override \
+    Ctrl <Key> KP_Subtract: smaller-vt-font() \n\
+    Ctrl <Key> KP_Add: larger-vt-font() \n\
+    Ctrl <Key> minus: smaller-vt-font() \n\
+    Ctrl <Key> plus: larger-vt-font() \n\
+
+! DOS-box colours...
+! Lighter Black & Gray
+xterm*background: #0c0c0c
+xterm*foreground: #aaaaaa
+
+! Black & DarkGray
+xterm*color0: #000000
+xterm*color8: #555555
+
+! DarkRed & Red
+xterm*color1: #aa0000
+xterm*color9: #ff5555
+
+! DarkGreen & Green
+xterm*color2: #00aa00
+xterm*color10: #55ff55
+
+! DarkYellow & Yellow
+xterm*color3: #aa5500
+xterm*color11: #ffff55
+
+! DarkBlue & Blue
+xterm*color4: #0000aa
+xterm*color12: #5555ff
+
+! DarkMagenta & Magenta
+xterm*color5: #aa00aa
+xterm*color13: #ff55ff
+
+! DarkCyan & Cyan
+xterm*color6: #00aaaa
+xterm*color14: #55ffff
+
+! LightGray + White
+xterm*color7: #aaaaaa
+xterm*color15: #ffffff
+
+! Orange
+xterm*cursorColor: #ffa530
+xterm*cursorBlink: off
+xterm*cursorOnTime: 400
+xterm*cursorOffTime: 400
+

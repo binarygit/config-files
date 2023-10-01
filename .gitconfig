@@ -1,0 +1,22 @@
+[user]
+	name = binarygit
+	email = inscription4@outlook.com
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[core]
+	editor = vim
+	autocrlf = false
+	excludesfile = /home/kali/.gitignore
+	attributesfile = /home/kali/.gitattributes
+[alias]
+	ci = commit
+	st = status
+	br = branch
+	co = checkout
+	pu = push origin main
+	unstage = restore --staged
+	cine = commit --amend --no-edit
+        ld = diff HEAD^ HEAD
+        ps = pull jarvis staging

@@ -1,0 +1,10 @@
+*~
+*swp
+dump.rdb
+todo
+my_erd/
+config/initializers/irb.rb
+c_e.rb
+.erdconfig
+debugging/
+custom-scripts/
