@@ -1,0 +1,34 @@
+[user]
+	name = binarygit
+	email = inscription4@outlook.com
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[core]
+	editor = vim
+	autocrlf = false
+	excludesfile = /home/kali/.gitignore
+	attributesfile = /home/kali/.gitattributes
+        #pager = delta
+[interactive]
+        diffFilter = delta --color-only
+[delta]
+      navigate = true
+      syntax-theme = TwoDark
+[merge]
+      conflictstyle = zdiff3
+[alias]
+	ci = commit
+	st = status
+	br = branch
+	co = checkout
+	pu = push origin main
+	unstage = restore --staged
+	cine = commit --amend --no-edit
+        ld = diff HEAD^ HEAD
+        rc = rebase --continue
+        ra = restore .
+        ri = rebase -i
+        rs = reset --soft HEAD^
+        sf = show --pretty="" --name-only HEAD # show files changed by latest commit.
