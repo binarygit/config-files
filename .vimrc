@@ -96,13 +96,13 @@ let mapleader= '-'
 
 " mapping for console.log
 map <leader>ch oconsole.log<c-v>(<c-v>'hello<c-v>')<ESC>
-map \c oconsole.log(
-map \q idocument.querySelector('
-map \qa idocument.querySelectorAll('
-map \ss isave_screenshot('~/hello.png
+map <leader>c oconsole.log(
+map <leader>q odocument.querySelector('
+map <leader>qa odocument.querySelectorAll('
+map <leader>ss osave_screenshot('~/hello.png
 
 " Search for method definition
-map \sd /def 
+map <leader>sd /def 
 
 " make the ' work like `
 map ' `
