@@ -20,3 +20,8 @@
 	cine = commit --amend --no-edit
         ld = diff HEAD^ HEAD
         ps = pull jarvis staging
+        rc = rebase --continue
+        sc = checkout staging-continuum
+        ra = restore .
+        ri = rebase -i
+        uh = reset --soft HEAD^

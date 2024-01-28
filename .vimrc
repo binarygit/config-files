@@ -77,16 +77,6 @@ let $BASH_ENV = "~/.bash_aliases"
 " adds a newline at the end of file
 set fixendofline
 
-" auto close braces
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
-
-
 filetype indent on
 
 set expandtab
@@ -102,13 +92,14 @@ packloadall
 " set path to use find
 set path+=**
 
+let mapleader= '-'
+
 " mapping for console.log
-map \ch oconsole.log<c-v>(<c-v>'hello<c-v>')<ESC>
+map <leader>ch oconsole.log<c-v>(<c-v>'hello<c-v>')<ESC>
 map \c oconsole.log(
 map \q idocument.querySelector('
 map \qa idocument.querySelectorAll('
-map \ss isave_screenshot(~/hello.png
-map \s :source $MYVIMRC<CR>
+map \ss isave_screenshot('~/hello.png
 
 " Search for method definition
 map \sd /def 
@@ -127,3 +118,13 @@ nnoremap ò :Rails<CR>
 
 " def initialize end
 map \in odef initialize<CR>end<ESC>O
+
+func Eatchar(pat)
+  let c = nr2char(getchar(0))
+  return (c =~ a:pat) ? '' : c
+endfunc
+
+" set colorscheme
+colo distinguished
+
+set colorcolumn=72

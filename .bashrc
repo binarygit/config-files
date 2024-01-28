@@ -156,7 +156,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # set vim as editor
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Change umask to make directory sharing easier
 umask 0002
@@ -189,3 +189,8 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 # Make Less utf-8 compliant
 export LESSCHARSET=utf-8
+
+export CDPATH=$HOME:$HOME/Documents
+
+# errata
+export gf=olumo-new-global-filter-g6slyp

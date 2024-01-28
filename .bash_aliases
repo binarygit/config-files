@@ -2,11 +2,9 @@
 #vim recognizes aliases
 shopt -s expand_aliases
 
+source '/home/kali/.rails_aliases.bash'
 #alias for listing directories
 alias eu="ls"
-
-#alias for opening multiple files as tabs
-alias vp="vim -p"
 
 #alias for tmuxinator
 alias mux="tmuxinator"
@@ -17,11 +15,8 @@ alias cop="rubocop"
 
 #alias for displaying date
 alias dt="date"
-
-#alias for clearing the terminal screen
 alias cr="clear"
-
-#alias for clearing the terminal screen
+#alias for ensuring sound works
 alias pk="pulseaudio -k"
 
 #alias for opening in gui
@@ -30,6 +25,8 @@ alias on='vim ~/Documents/notes/notes.txt'
 
 #alias for getting into folders i usually work on
 alias doc="cd ~/Documents/"
+alias doo='cd ~/Documents/openfoodnetwork'
+alias oou="git co master && git fetch upstream && git merge upstream/master && bundle && yarn && r db:migrate"
 
 #alias for editing and running test.rb 
 alias vtest="vim test.rb"
@@ -53,34 +50,13 @@ alias teu='tmux ls'
 
 #alias for opening bash_alias
 alias oa='vim /home/kali/.bash_aliases'
-
+alias ora='vim /home/kali/.rails_aliases.bash'
 
 # all stuff rails
 alias r='rails'
-alias rmi='rails db:migrate'
-alias rsb='rails console --sandbox'
 alias bx="bundle exec rspec"
 alias rs='redis-server'
 alias upm='rails stimulus:manifest:update'
-
-# aliases for sampleapp
-alias dos='cd ~/Documents/ror-tutorial/sample_app'
-alias dosc='cd ~/Documents/ror-tutorial/sample_app/app/controllers'
-alias dosm='cd ~/Documents/ror-tutorial/sample_app/app/models'
-alias dost='cd ~/Documents/ror-tutorial/sample_app/test'
-alias dosti='cd ~/Documents/ror-tutorial/sample_app/test/integration'
-alias dostc='cd ~/Documents/ror-tutorial/sample_app/test/controllers'
-alias doss='cd ~/Documents/ror-tutorial/sample_app/app/assets/stylesheets'
-alias dosv='cd ~/Documents/ror-tutorial/sample_app/app/views'
-
-# aliases for open food network
-alias doo='cd ~/Documents/openfoodnetwork'
-alias doov='cd ~/Documents/openfoodnetwork/app/views'
-alias doop='cd ~/Documents/openfoodnetwork/app/views/admin/reports/filters'
-alias dooj='cd ~/Documents/openfoodnetwork/app/assets/javascripts'
-alias doow="cd ~/Documents/openfoodnetwork/app/webpacker/controllers"
-alias doovo="cd ~/Documents/openfoodnetwork/app/views/spree/admin/orders"
-alias doojo="cd ~/Documents/openfoodnetwork/app/assets/javascripts/admin/spree/orders"
 
 alias ff='fzf'
 alias ll='ls -l --color=auto -h'
@@ -91,5 +67,21 @@ alias owb='cd ~/.rbenv/versions/3.2.1/lib/ruby/gems/3.2.0/gems/webrick-1.8.1'
 alias sap="scrape-and-push"
 
 # delete migration files
-alias rmig='rm db/migrate/20230724052043_create_campaign_consolidations.rb db/migrate/20230724052044_migrate_company_surveys_to_assessments.rb db/migrate/20230809064421_add_fields_to_campaign_consolidation.rb
-'
+alias rmig='rm db/migrate/20230724052043_create_campaign_consolidations.rb db/migrate/20230724052044_migrate_company_surveys_to_assessments.rb db/migrate/20230809064421_add_fields_to_campaign_consolidation.rb'
+
+alias lo='mux olumo-s && mux olumo'
+
+alias gu="git stash && git co staging && git fetch && git merge jarvis/staging"
+
+alias h="heroku"
+alias hc="heroku run -a olumo-staging bin/rails console"
+alias hg="heroku run -a olumo-new-global-filter-g6slyp bin/rails console"
+alias up="./script.bash"
+alias bcf="backup-config-files"
+
+function backup-config-files() {
+  cp ~/.bash_aliases ~/.bashrc ~/.gitattributes ~/.gitconfig ~/.gitignore ~/.irbrc ~/.rdbgrc ~/.tmux.conf ~/.vimrc ~/.Xauthority ~/.Xdefaults ~/.Xresources ~/important-config-files 
+  cd ~/important-config-files
+  git add .
+  git ci -m "Updated at $(date)"
+}
