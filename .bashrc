@@ -16,7 +16,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTFILESIZE=10000
+HISTFILESIZE=50000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -174,6 +174,9 @@ PROMPT_COMMAND="history -a; history -c; history -r"
 # Databases variables to make olumo work
 export OLUMO_DATABASE_USER=sammy
 export OLUMO_DATABASE_PASSWORD=password
+
+# Database url to make fluid work
+export DATABASE_URL=postgres://ofn:f00d@localhost:5432
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

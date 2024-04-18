@@ -99,10 +99,14 @@ map <leader>ch oconsole.log<c-v>(<c-v>'hello<c-v>')<ESC>
 map <leader>c oconsole.log(
 map <leader>q odocument.querySelector('
 map <leader>qa odocument.querySelectorAll('
-map <leader>ss osave_screenshot('~/hello.png
+map <leader>ss osave_screenshot('~/hello.png<ESC>
+map <leader>r orequire '
+
+map <leader>an oconfig.action_view.annotate_rendered_view_with_filenames = true<ESC>
 
 " Search for method definition
-map <leader>sd /def 
+map <leader>sd /def
+map <leader>gr :so ~/.vim/plugin/RainbowParenthsis.vim<CR>
 
 " make the ' work like `
 map ' `

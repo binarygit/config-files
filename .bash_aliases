@@ -50,7 +50,7 @@ alias teu='tmux ls'
 
 #alias for opening bash_alias
 alias oa='vim /home/kali/.bash_aliases'
-alias ora='vim /home/kali/.rails_aliases.bash'
+alias or='vim /home/kali/.rails_aliases.bash'
 
 # all stuff rails
 alias r='rails'
@@ -66,22 +66,39 @@ alias owb='cd ~/.rbenv/versions/3.2.1/lib/ruby/gems/3.2.0/gems/webrick-1.8.1'
 # alias to scrape jobs and push to github
 alias sap="scrape-and-push"
 
-# delete migration files
-alias rmig='rm db/migrate/20230724052043_create_campaign_consolidations.rb db/migrate/20230724052044_migrate_company_surveys_to_assessments.rb db/migrate/20230809064421_add_fields_to_campaign_consolidation.rb'
-
 alias lo='mux olumo-s && mux olumo'
+alias lf='mux fluid-s && mux fluid'
+alias lofn='mux ofn-s && mux ofn'
 
-alias gu="git stash && git co staging && git fetch && git merge jarvis/staging"
+alias gu="git stash && git co staging && git fetch jarvis && git merge jarvis/staging && bundle && yarn"
 
 alias h="heroku"
-alias hc="heroku run -a olumo-staging bin/rails console"
-alias hg="heroku run -a olumo-new-global-filter-g6slyp bin/rails console"
-alias up="./script.bash"
 alias bcf="backup-config-files"
 
 function backup-config-files() {
-  cp ~/.bash_aliases ~/.bashrc ~/.gitattributes ~/.gitconfig ~/.gitignore ~/.irbrc ~/.rdbgrc ~/.tmux.conf ~/.vimrc ~/.Xauthority ~/.Xdefaults ~/.Xresources ~/important-config-files 
-  cd ~/important-config-files
+  cp ~/.bash_aliases ~/.bashrc ~/.gitattributes ~/.gitconfig ~/.gitignore ~/.irbrc ~/.rdbgrc ~/.tmux.conf ~/.vimrc ~/.Xauthority ~/.Xdefaults ~/.Xresources ~/Documents/important-config-files 
+  cd ~/Documents/important-config-files
   git add .
   git ci -m "Updated at $(date)"
+  git push
+}
+
+function hoa() {
+ h open -a $1
+}
+
+function ha {
+  h apps -t olumo
+}
+
+function hc {
+  if [ "$#" -eq 0 ]; then
+    heroku run bin/rails console -a olumo-staging 
+  else
+    heroku run bin/rails console -a $1 
+  fi
+}
+
+function sm {
+  ag '(private|def )' $1 | less
 }

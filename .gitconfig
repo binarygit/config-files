@@ -24,4 +24,4 @@
         sc = checkout staging-continuum
         ra = restore .
         ri = rebase -i
-        uh = reset --soft HEAD^
+        rs = reset --soft HEAD^
