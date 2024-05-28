@@ -175,9 +175,6 @@ PROMPT_COMMAND="history -a; history -c; history -r"
 export OLUMO_DATABASE_USER=sammy
 export OLUMO_DATABASE_PASSWORD=password
 
-# Database url to make fluid work
-export DATABASE_URL=postgres://ofn:f00d@localhost:5432
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Use ripgrep with fzf
@@ -197,3 +194,4 @@ export CDPATH=$HOME:$HOME/Documents
 
 # errata
 export gf=olumo-new-global-filter-g6slyp
+export XKBVARIANT='English (programmer Dvorak ruby)'

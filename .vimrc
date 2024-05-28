@@ -1,4 +1,4 @@
-
+" Defaults {{{
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
@@ -55,16 +55,10 @@ endif
 if &t_Co > 1
    syntax enable
 endif
+" }}}
 
 "make line numbers visible
 set nu
-
-"extensions
-if has("autocmd")
-  augroup templates
-    autocmd BufNewFile *.rb 0r ~/.vim/templates/skeleton.rb
-  augroup END
-endif
 
 "Xterm
 if $COLORTERM == 'xterm'
@@ -94,22 +88,8 @@ set path+=**
 
 let mapleader= '-'
 
-" mapping for console.log
-map <leader>ch oconsole.log<c-v>(<c-v>'hello<c-v>')<ESC>
-map <leader>c oconsole.log(
-map <leader>q odocument.querySelector('
-map <leader>qa odocument.querySelectorAll('
-map <leader>ss osave_screenshot('~/hello.png<ESC>
-map <leader>r orequire '
-
-map <leader>an oconfig.action_view.annotate_rendered_view_with_filenames = true<ESC>
-
-" Search for method definition
-map <leader>sd /def
-map <leader>gr :so ~/.vim/plugin/RainbowParenthsis.vim<CR>
-
-" make the ' work like `
-map ' `
+" make the ' work like ` for marks
+nnoremap ' `
 
 set rtp+=~/.fzf
 
@@ -120,9 +100,6 @@ nnoremap <silent> í :Marks<CR>
 
 nnoremap ò :Rails<CR>
 
-" def initialize end
-map \in odef initialize<CR>end<ESC>O
-
 func Eatchar(pat)
   let c = nr2char(getchar(0))
   return (c =~ a:pat) ? '' : c
@@ -132,3 +109,73 @@ endfunc
 colo distinguished
 
 set colorcolumn=72
+
+" Mappings from Vimscript the hard way
+
+" Uppercase the selected text
+vnoremap \ U
+
+" Convert current word to uppercase in insert mode
+inoremap <c-u> <esc>bgUwA
+
+" Open vimrc
+nnoremap <leader>ev :split $MYVIMRC<cr>
+" Source vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" abbreviate <leader>
+" inoreabbrev lea <leader>
+
+let maplocalleader= '('
+
+" File Type specific settings ---------------------- {{{
+
+" Check spelling when in text and markdown files
+autocmd FileType text,markdown setlocal spell spelllang=en_us
+
+augroup filetype_javascript
+  " Type function <cursor>() {
+  " } for js files
+  autocmd FileType javascript nnoremap <buffer> <localleader>fn ifunction <c-v>() <c-v>{<cr>}<esc>kf(i
+
+  " mapping for console.log
+  autocmd FileType javascript nnoremap <buffer> <localleader>ch oconsole.log<c-v>(<c-v>'hello<c-v>')<ESC>
+  autocmd FileType javascript nnoremap <buffer> <localleader>c oconsole.log(
+  autocmd FileType javascript nnoremap <buffer> <localleader>q odocument.querySelector('
+  autocmd FileType javascript nnoremap <buffer> <localleader>qa odocument.querySelectorAll('
+augroup END
+
+augroup filetype_ruby
+  " Find prev class definition and add an initialize method below it
+  autocmd FileType ruby nnoremap <buffer> <localleader>in ?class<cr>odef initialize<cr>end<esc>O
+  " Search for method definition
+  autocmd FileType ruby nnoremap <buffer> <localleader>sd /def
+  " Save SS to ~/hello.png
+  autocmd FileType ruby nnoremap <buffer> <localleader>ss osave_screenshot('~/hello.png')<ESC>
+  autocmd FileType ruby nnoremap <buffer> <localleader>re ggorequire '
+  autocmd FileType ruby nnoremap <buffer> <localleader>an oconfig.action_view.annotate_rendered_view_with_filenames = true<ESC>
+  " Create new ruby files with the specified skeleton
+  autocmd BufNewFile *.rb 0r ~/.vim/templates/skeleton.rb
+augroup END
+
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+" Practicing creating new movements
+" Works like <im> in ruby files
+" onoremap in :<c-u>execute "normal! ?def\rjV/end\rk"<cr>
+
+" Works to select the heading text in md files
+" onoremap ih :<c-u>execute "normal! ?^\\(--\\\|==\\)$\r:noh\rkvg_"<cr>
+
+" Works to select the heading text and the "--" or "==" which marks a heading in md files
+" onoremap ah :<c-u>execute "normal! ?^\\(--\\\|==\\)$\r:noh\rg_vk0"<cr>
+
+" Source current file
+nnoremap <leader>sc :source %<cr>
+
+" Use vim's very magic regex parsing mode which is similar to ruby, perl etc
+nnoremap / /\v

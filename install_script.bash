@@ -66,7 +66,7 @@ function install-ruby() {
   git clone https://github.com/rbenv/rbenv.git ~/.rbenv
   echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
   echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-  exit
+  source ~/.bashrc
 }
 
 function install-ruby-build() {
