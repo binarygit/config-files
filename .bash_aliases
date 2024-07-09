@@ -106,4 +106,8 @@ function sm {
 # Starts a server at port 3000
 function www {
   ruby -run -e httpd . -p 3000
+  # alternatively, to specify another root file: ruby -run -e httpd -- --port=8080 index.rb
+  # docs at: https://www.rubydoc.info/stdlib/un/toplevel:httpd
+  # If you're confused about the -run method it's actually, -r un (referencing the un lib):
+  # https://stackoverflow.com/questions/48354843/explain-ruby-run-e-httpd
 }
