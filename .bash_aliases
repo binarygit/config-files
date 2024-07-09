@@ -102,3 +102,8 @@ function hc {
 function sm {
   ag '(private|def )' $1 | less
 }
+
+# Starts a server at port 3000
+function www {
+  ruby -run -e httpd . -p 3000
+}

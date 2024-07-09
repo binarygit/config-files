@@ -190,8 +190,15 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 # Make Less utf-8 compliant
 export LESSCHARSET=utf-8
 
+# Helps cd-ing into dirs
 export CDPATH=$HOME:$HOME/Documents
 
 # errata
-export gf=olumo-new-global-filter-g6slyp
 export XKBVARIANT='English (programmer Dvorak ruby)'
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# exporting POSTGRES creds so that I don't have to modify
+# database.yml everytime.
+export POSTGRES_USERNAME='ofn'
+export POSTGRES_PASSWORD='f00d'

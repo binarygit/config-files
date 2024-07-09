@@ -179,3 +179,6 @@ nnoremap <leader>sc :source %<cr>
 
 " Use vim's very magic regex parsing mode which is similar to ruby, perl etc
 nnoremap / /\v
+
+" mappings
+nnoremap <leader>ci :G add .<cr>:G ci<cr>
