@@ -158,6 +158,10 @@ augroup filetype_ruby
   autocmd BufNewFile *.rb 0r ~/.vim/templates/skeleton.rb
 augroup END
 
+augroup filetype_eruby
+  autocmd FileType eruby nnoremap <buffer> <localleader>de o<% debugger %><ESC>
+augroup END
+
 augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
@@ -182,3 +186,7 @@ nnoremap / /\v
 
 " mappings
 nnoremap <leader>ci :G add .<cr>:G ci<cr>
+
+" Indentation rules for ruby set per standardrb
+let g:ruby_indent_assignment_style = 'variable'
+let g:ruby_indent_hanging_elements = 0

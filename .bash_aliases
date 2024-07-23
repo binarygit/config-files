@@ -111,3 +111,11 @@ function www {
   # If you're confused about the -run method it's actually, -r un (referencing the un lib):
   # https://stackoverflow.com/questions/48354843/explain-ruby-run-e-httpd
 }
+
+alias aa="cd /home/kali/Documents/avo-file/avo-advanced"
+alias af="cd /home/kali/Documents/avo-file/"
+
+# checkout a PR
+function copr {
+  gh pr checkout $1
+}
