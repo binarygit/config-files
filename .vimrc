@@ -152,7 +152,7 @@ augroup filetype_ruby
   autocmd FileType ruby nnoremap <buffer> <localleader>sd /def
   " Save SS to ~/hello.png
   autocmd FileType ruby nnoremap <buffer> <localleader>ss osave_screenshot('~/hello.png')<ESC>
-  autocmd FileType ruby nnoremap <buffer> <localleader>re ggorequire '
+  autocmd FileType ruby nnoremap <buffer> <localleader>re ggjOrequire '
   autocmd FileType ruby nnoremap <buffer> <localleader>an oconfig.action_view.annotate_rendered_view_with_filenames = true<ESC>
   " Create new ruby files with the specified skeleton
   autocmd BufNewFile *.rb 0r ~/.vim/templates/skeleton.rb
@@ -185,8 +185,46 @@ nnoremap <leader>sc :source %<cr>
 nnoremap / /\v
 
 " mappings
-nnoremap <leader>ci :G add .<cr>:G ci<cr>
+nnoremap <leader>ga :call AddAllAndCommit()<cr>
+nnoremap <leader>gw :Gwrite<cr>
+nnoremap <leader>gci :call AddCurrentAndAmend()<cr>
 
 " Indentation rules for ruby set per standardrb
 let g:ruby_indent_assignment_style = 'variable'
 let g:ruby_indent_hanging_elements = 0
+
+let g:rails_projections = {
+      \ "app/components/*_component.rb": {
+      \ "type": "component",
+      \ "related": "app/components/{}_component.html.erb"
+      \ },
+      \ "app/components/*_component.html.erb": {
+      \ "type": "template",
+      \ "related": "app/components/{}_component.rb"
+      \ }}
+
+" for feature
+
+iab _n _Nilable
+iab _b _Boolean
+iab af Avo::Fields::BaseField
+iab abr Avo::BaseResource
+nnoremap <localleader>a oprop :args, Hash, :**, default: {}.freeze<esc>
+
+nnoremap <leader>c :call GitMessage()<cr>
+function! GitMessage() 
+  execute "Gwrite"
+  let l:message =  "G ci -m " . "'Apply literal to " . @%  . "'"
+  echo l:message
+  execute l:message
+endfunction
+
+function! AddAllAndCommit() 
+  execute "G add ."
+  execute "G ci"
+endfunction
+
+function! AddCurrentAndAmend()
+  execute "Gwrite"
+  execute "G cine"
+endfunction

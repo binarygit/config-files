@@ -4,6 +4,7 @@ dump.rdb
 todo
 my_erd/
 config/initializers/irb.rb
+config/initializers/mycode.rb
 c_e.rb
 .erdconfig
 debugging/

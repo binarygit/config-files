@@ -119,3 +119,6 @@ alias af="cd /home/kali/Documents/avo-file/"
 function copr {
   gh pr checkout $1
 }
+
+alias i="i18n-tasks"
+alias er="vi ~/.rails_aliases.bash"
