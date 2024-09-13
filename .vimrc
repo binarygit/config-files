@@ -188,6 +188,7 @@ nnoremap / /\v
 nnoremap <leader>ga :call AddAllAndCommit()<cr>
 nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gci :call AddCurrentAndAmend()<cr>
+nnoremap <leader>gr :G restore %<cr>
 
 " Indentation rules for ruby set per standardrb
 let g:ruby_indent_assignment_style = 'variable'
@@ -213,8 +214,8 @@ nnoremap <localleader>a oprop :args, Hash, :**, default: {}.freeze<esc>
 
 nnoremap <leader>c :call GitMessage()<cr>
 function! GitMessage() 
-  execute "Gwrite"
-  let l:message =  "G ci -m " . "'Apply literal to " . @%  . "'"
+  execute "G add ."
+  let l:message =  "G ci -m " . "'Remove after_initialize for " . @%  . "'"
   echo l:message
   execute l:message
 endfunction

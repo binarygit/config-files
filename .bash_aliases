@@ -122,3 +122,6 @@ function copr {
 
 alias i="i18n-tasks"
 alias er="vi ~/.rails_aliases.bash"
+alias bxfs="bx spec/features && bx spec/system"
+alias bxf="bx spec/features"
+alias bxs="bx spec/system"
