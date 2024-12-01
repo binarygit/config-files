@@ -71,7 +71,7 @@ function backup-config-files() {
   cd ~/Documents/important-config-files
   git add .
   git ci -m "Updated at $(date)" --quiet
-  git push --silent
+  git push --quiet
 }
 
 function hii() {
