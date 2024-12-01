@@ -156,7 +156,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # set vim as editor
-export EDITOR='nvim'
+export EDITOR='vim'
 
 # Change umask to make directory sharing easier
 umask 0002
@@ -192,6 +192,7 @@ export LESSCHARSET=utf-8
 
 # Helps cd-ing into dirs
 export CDPATH=$HOME:$HOME/Documents
+export CDPATH=$HOME:$HOME/Documents/current
 
 # errata
 export XKBVARIANT='English (programmer Dvorak ruby)'

@@ -10,6 +10,14 @@
 	autocrlf = false
 	excludesfile = /home/kali/.gitignore
 	attributesfile = /home/kali/.gitattributes
+        #pager = delta
+[interactive]
+        diffFilter = delta --color-only
+[delta]
+      navigate = true
+      syntax-theme = TwoDark
+[merge]
+      conflictstyle = zdiff3
 [alias]
 	ci = commit
 	st = status
@@ -19,9 +27,8 @@
 	unstage = restore --staged
 	cine = commit --amend --no-edit
         ld = diff HEAD^ HEAD
-        ps = pull jarvis staging
         rc = rebase --continue
-        sc = checkout staging-continuum
         ra = restore .
         ri = rebase -i
         rs = reset --soft HEAD^
+        sf = show --pretty="" --name-only HEAD # show files changed by latest commit.

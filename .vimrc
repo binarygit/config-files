@@ -131,7 +131,7 @@ let maplocalleader= '('
 " File Type specific settings ---------------------- {{{
 
 " Check spelling when in text and markdown files
-autocmd FileType text,markdown setlocal spell spelllang=en_us
+" autocmd FileType text,markdown setlocal spell spelllang=en_us
 
 augroup filetype_javascript
   " Type function <cursor>() {
@@ -156,6 +156,17 @@ augroup filetype_ruby
   autocmd FileType ruby nnoremap <buffer> <localleader>an oconfig.action_view.annotate_rendered_view_with_filenames = true<ESC>
   " Create new ruby files with the specified skeleton
   autocmd BufNewFile *.rb 0r ~/.vim/templates/skeleton.rb
+
+  " Run tests easily
+  " This is a wip
+  "autocmd FileType ruby nnoremap <buffer> <localleader>rt ?test<cr>$V:normal! %:Rails<cr>
+  "autocmd FileType ruby nnoremap <buffer> <localleader>rt ?test<cr>$V:normal! %<cr>:Rails<cr>
+  "autocmd FileType ruby nnoremap <buffer> <localleader>rt :exe "?test"<cr>$V:exe "normal %"<cr>:Rails<cr>
+  "autocmd FileType ruby nnoremap <buffer> <localleader>rt ?test<cr>$V%:Rails<cr>
+  autocmd FileType ruby nnoremap <buffer> <localleader>sr oFile.write('/tmp/index.html', response.body)<esc>
+  autocmd FileType ruby nnoremap <buffer> <localleader>tf :!r t %<cr>
+  autocmd FileType ruby nnoremap <buffer> <localleader>cop :cop %<cr>
+  autocmd FileType ruby nnoremap <buffer> <localleader>copa :cop -a %<cr>
 augroup END
 
 augroup filetype_eruby
@@ -229,3 +240,7 @@ function! AddCurrentAndAmend()
   execute "Gwrite"
   execute "G cine"
 endfunction
+
+" Better commits
+autocmd Filetype gitcommit setlocal spell textwidth=72
+autocmd Filetype vimwiki setlocal spell textwidth=72

@@ -13,3 +13,7 @@ custom-scripts/
 tags
 project-notes/
 *log
+.note.md
+.rails.md
+config/initializers/console.rb
+draft.md

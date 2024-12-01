@@ -3,6 +3,11 @@
 shopt -s expand_aliases
 
 source '/home/kali/.rails_aliases.bash'
+
+# use bat
+alias cat="bat"
+alias man="batman"
+
 #alias for listing directories
 alias eu="ls"
 
@@ -11,22 +16,21 @@ alias mux="tmuxinator"
 
 #alias for rubocop
 alias copx="rubocop -x"
+alias copa="rubocop -a"
 alias cop="rubocop"
 
 #alias for displaying date
 alias dt="date"
 alias cr="clear"
+
 #alias for ensuring sound works
 alias pk="pulseaudio -k"
 
 #alias for opening in gui
 alias o="xdg-open"
-alias on='vim ~/Documents/notes/notes.txt'
 
 #alias for getting into folders i usually work on
 alias doc="cd ~/Documents/"
-alias doo='cd ~/Documents/openfoodnetwork'
-alias oou="git co master && git fetch upstream && git merge upstream/master && bundle && yarn && r db:migrate"
 
 #alias for editing and running test.rb 
 alias vtest="vim test.rb"
@@ -50,7 +54,7 @@ alias teu='tmux ls'
 
 #alias for opening bash_alias
 alias oa='vim /home/kali/.bash_aliases'
-alias or='vim /home/kali/.rails_aliases.bash'
+alias er='vim /home/kali/.rails_aliases.bash'
 
 # all stuff rails
 alias r='rails'
@@ -59,46 +63,69 @@ alias rs='redis-server'
 alias upm='rails stimulus:manifest:update'
 
 alias ff='fzf'
-alias ll='ls -l --color=auto -h'
 
-alias olib='cd ~/.rbenv/versions/3.2.1/lib/ruby/3.2.0'
-alias owb='cd ~/.rbenv/versions/3.2.1/lib/ruby/gems/3.2.0/gems/webrick-1.8.1'
-# alias to scrape jobs and push to github
-alias sap="scrape-and-push"
-
-alias lo='mux olumo-s && mux olumo'
-alias lf='mux fluid-s && mux fluid'
-alias lofn='mux ofn-s && mux ofn'
-
-alias gu="git stash && git co staging && git fetch jarvis && git merge jarvis/staging && bundle && yarn"
-
-alias h="heroku"
-alias bcf="backup-config-files"
+alias lc='mux comm-s && mux comm'
 
 function backup-config-files() {
   cp ~/.bash_aliases ~/.bashrc ~/.gitattributes ~/.gitconfig ~/.gitignore ~/.irbrc ~/.rdbgrc ~/.tmux.conf ~/.vimrc ~/.Xauthority ~/.Xdefaults ~/.Xresources ~/Documents/important-config-files 
   cd ~/Documents/important-config-files
   git add .
-  git ci -m "Updated at $(date)"
-  git push
+  git ci -m "Updated at $(date)" --quiet
+  git push --silent
 }
 
-function hoa() {
- h open -a $1
-}
+function hii() {
+  # Define the array of files to symlink
+  files=("~/.bash_aliases" "~/.bashrc" "~/.gitattributes" "~/.gitconfig" "~/.gitignore" "~/.irbrc" "~/.rdbgrc" "~/.tmux.conf" "~/.vimrc" "~/.Xauthority" "~/.Xdefaults" "~/.Xresources")
+  nfiles=(".bash_aliases" ".bashrc" ".gitattributes" ".gitconfig" ".gitignore" ".irbrc" ".rdbgrc" ".tmux.conf" ".vimrc" ".Xauthority" ".Xdefaults" ".Xresources")
 
-function ha {
-  h apps -t olumo
-}
+# Target directory for symlinks
+target_dir="/home/kali/Documents/important-config-files"
 
-function hc {
-  if [ "$#" -eq 0 ]; then
-    heroku run bin/rails console -a olumo-staging 
+# Loop through each file in the array
+for file in "${files[@]}"; do
+  # Expand the tilde and check if the file exists
+  expanded_file="${file/#\~/$HOME}"
+
+  if [ -e "$expanded_file" ]; then
+    # Create the symlink in the target directory
+    file_name=("$target_dir/$file")
+    echo $file_name
+    #ln -s "$expanded_file" "$target_dir"
+    #echo "Symlink created for $expanded_file in $target_dir"
   else
-    heroku run bin/rails console -a $1 
+    echo "File $expanded_file does not exist, skipping..."
   fi
+done
 }
 
+# NOTE: These aren't used currently because I don't use heroku at work anymore.
+# I think they'll be useful again so I've kept them here.
+
+# alias h="heroku"
+
+# function hoa() {
+#  h open -a $1
+# }
+
+# function ha {
+#   h apps -t olumo
+# }
+
+# function hc {
+#   if [ "$#" -eq 0 ]; then
+#     heroku run bin/rails console -a olumo-staging 
+#   else
+#     heroku run bin/rails console -a $1 
+#   fi
+# }
+
+# checkout a PR
+# function copr {
+#   gh pr checkout $1
+# }
+
+# show method. Displays methods in a ruby file.
 function sm {
   ag '(private|def )' $1 | less
 }
@@ -112,16 +139,5 @@ function www {
   # https://stackoverflow.com/questions/48354843/explain-ruby-run-e-httpd
 }
 
-alias aa="cd /home/kali/Documents/avo-file/avo-advanced"
-alias af="cd /home/kali/Documents/avo-file/"
-
-# checkout a PR
-function copr {
-  gh pr checkout $1
-}
-
-alias i="i18n-tasks"
-alias er="vi ~/.rails_aliases.bash"
-alias bxfs="bx spec/features && bx spec/system"
-alias bxf="bx spec/features"
-alias bxs="bx spec/system"
+# Aliases for commish
+alias rat="r t test/controllers/ test/models/ test/jobs/ test/integration test/mailers -dq"
