@@ -1,0 +1,4 @@
+# Sets irb prompt to vi editing mode
+set show-mode-in-prompt on
+set keymap vi
+set editing-mode vi
